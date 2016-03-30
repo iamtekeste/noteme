@@ -1,6 +1,6 @@
 # Note Me
 
-> OSX Notes app clone for Ubuntu & Windows. It would be weird if I created a Notes app for OSX right?
+> OSX's Notes app clone for Ubuntu & Windows. It would be weird if I created a clone of OSX's Notes app for OSX right?
 
 
 ## Dev

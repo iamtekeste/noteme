@@ -25,8 +25,8 @@ export default class App extends React.Component {
   }
 
   handleChange(currentNote) {
-    // console.log(currentNote.id);
     let existingNotes = this.state.notes;
+
     let updatedNotes = [];
     if(currentNote.id == null) {
       var date = new Date();
@@ -43,9 +43,6 @@ export default class App extends React.Component {
       });
       this.setState({selectedNote: currentNote, notes:existingNotes})
     }
-    //check if id is null
-        //if null create new note and append it to `data`
-    //if not null it means there was data inside it then find that note object in `data` and update that
   }
 
   addNewNote() {
