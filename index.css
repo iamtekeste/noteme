@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+} 
+aside.notesList, .editor {display: inline-block; vertical-align: top;}
+aside.notesList {
+    width: 30%;
+    border-right: 1px solid #eee;
+    height: 100%;
+    font-family: Fira;
+}
+.noteItem {
+	font-size: 18px;
+    padding: 10px 10px;
+    border-bottom: 1px solid #eee;
+}
+.editor {
+    width: 68%;
+    margin-left: 10px;
+}
+textarea {
+	width: 100%;
+	height: 500px;
+}
