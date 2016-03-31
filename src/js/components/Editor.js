@@ -5,16 +5,12 @@ export default class NoteItem extends React.Component {
 		super();
 	}
 	handleChange(e) {
-			let newNote = {text: e.target.value}
-			if(this.props.selectedNote._id != null ) {
-				newNote._id = this.props.selectedNote._id;
-				this.props.onChangeMe(newNote);
-			}
-			else {
-				//creating new note
-				newNote._id = null;
-				this.props.onChangeMe(newNote);
-			}
+			   let newNote = this.props.selectedNote;
+			   newNote.text = e.target.value;
+			   if(newNote.text === '')
+			   		newNote._deleted = true; 	
+
+			   this.props.onChangeMe(newNote)
 	}
 	componentWillMount() {
 		this.state = {

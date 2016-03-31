@@ -15,7 +15,7 @@ export default class App extends React.Component {
     };
   }
   loadNotesFromDB() {
-    db.allDocs({include_docs: true, descending: false}, (err, doc) => {
+    db.allDocs({include_docs: true, descending: true}, (err, doc) => {
        var notes = [];
        console.log(doc.rows.length)
 
@@ -56,7 +56,7 @@ export default class App extends React.Component {
     if(currentNote._id == null) {
       var date = new Date();
       currentNote._id = date.toISOString();
-      updatedNotes = [...existingNotes, currentNote];
+      updatedNotes = [currentNote, ...existingNotes];
       this.setState({selectedNote: currentNote, notes:updatedNotes})
     } else {
       //update note
