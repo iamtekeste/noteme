@@ -6,24 +6,24 @@ export default class NoteItem extends React.Component {
 	}
 	handleChange(e) {
 			let newNote = {text: e.target.value}
-			if(this.props.selectedNote.id != null ) {
-				newNote.id = this.props.selectedNote.id;
+			if(this.props.selectedNote._id != null ) {
+				newNote._id = this.props.selectedNote._id;
 				this.props.onChangeMe(newNote);
 			}
 			else {
 				//creating new note
-				newNote.id = null;
+				newNote._id = null;
 				this.props.onChangeMe(newNote);
 			}
 	}
 	componentWillMount() {
 		this.state = {
-			note: {id:null, text:''}
+			note: {_id:null, text:''}
 		}
 	}
 	// componentWillReceiveProps() {
 	// 	this.setState({note: this.props.selectedNote }, () => {
-	// 		console.log(this.state.note.id);
+	// 		console.log(this.state.note._id);
 	// 	});
 	// }
 	addNewNote() {
