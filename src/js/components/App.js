@@ -11,13 +11,27 @@ export default class App extends React.Component {
     super();
     this.state = {
       selectedNote: {_id:null, text:''}, //open the editor with a blank space
-      notes : []
+      notes : [],
+      searchText: ''
     };
+  }
+  deleteNote(noteToBeDeleted) {
+    var existingNotes = this.state.notes;
+    var updatedNotes = existingNotes.filter(function(note) {
+      if(note._id != noteToBeDeleted._id)
+          return note;
+    });
+    this.setState({notes: updatedNotes});
+
+    //let's actually remove it from the database
+    put.remove(note)
+      .catch(function(err) {
+        console.log(err.message)
+      })
   }
   loadNotesFromDB() {
     db.allDocs({include_docs: true, descending: true}, (err, doc) => {
        var notes = [];
-       console.log(doc.rows.length)
 
        doc.rows.forEach(function(row) {
         notes.push(row.doc);
@@ -32,6 +46,7 @@ export default class App extends React.Component {
     // indexedDB.deleteDatabase('_pouch_notes');
     this.loadNotesFromDB();
   }
+
 
   //This sets the currently selected note
   handleClick(note) {
@@ -54,7 +69,7 @@ export default class App extends React.Component {
 
     let updatedNotes = [];
     if(currentNote._id == null) {
-      var date = new Date();
+      var date = new Date();  
       currentNote._id = date.toISOString();
       updatedNotes = [currentNote, ...existingNotes];
       this.setState({selectedNote: currentNote, notes:updatedNotes})
@@ -79,11 +94,18 @@ export default class App extends React.Component {
     var newNote = {_id:null, text: ''}
     this.setState({selectedNote: newNote});
   }
+  handleSearch(searchText) {
+      this.setState({searchText: searchText});
+  }
 
   render() {
     return (
       <div>
-        <Sidebar onClick={this.handleClick.bind(this)} notes={this.state.notes} />
+        <Sidebar onClick={this.handleClick.bind(this)} 
+                 handleSearch={this.handleSearch.bind(this)}
+                 notes={this.state.notes} 
+                 searchText={this.state.searchText}
+                  />
         <Editor selectedNote={this.state.selectedNote} 
                 onChangeMe={this.handleChange.bind(this)}
                 addNewNote={this.addNewNote.bind(this)} />

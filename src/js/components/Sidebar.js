@@ -1,6 +1,6 @@
 import React from "react";
-import NoteItem from "./NoteItem";
-
+import NotesList from "./NotesList";
+import Search from "./Search";
 export default class Sidebar extends React.Component {
     constructor() {
         super();
@@ -8,11 +8,16 @@ export default class Sidebar extends React.Component {
     handleClick(note) {
     	this.props.onClick(note);
     }
+    handleSearch(searchText) {
+        this.props.handleSearch(searchText);
+    }
     render() {
-    	var notes = this.props.notes.map(note => {
-            if(note.text != '')
-    		      return <NoteItem onClick={this.handleClick.bind(this)} key={note._id} note={note} />;
-    	});
-        return <aside className="notesList">{notes}</aside>;
+        return <aside className="sidebar">
+                    <Search handleSearch={this.handleSearch.bind(this)} searchText={this.props.searchText} />
+                    <NotesList className="notesList" 
+                               searchText={this.props.searchText} 
+                               notes={this.props.notes} 
+                               onClick={this.handleClick.bind(this)} />
+               </aside>;
     }
 }

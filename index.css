@@ -2,8 +2,8 @@ body {
     margin: 0;
     background: #fff;
 } 
-aside.notesList, .editor {display: inline-block; vertical-align: top;}
-aside.notesList {
+aside, .editor {display: inline-block; vertical-align: top;}
+aside {
     width: 30%;
     border-right: 1px solid #eee;
     height: 100%;
@@ -17,6 +17,7 @@ aside.notesList {
 .editor {
     width: 68%;
     margin-left: 10px;
+    background: #FAFAF8;
 }
 textarea {
 	width: 100%;
