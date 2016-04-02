@@ -5,6 +5,9 @@ export default class Sidebar extends React.Component {
     constructor() {
         super();
     }
+    deleteHandler(note) {
+      this.props.deleteHandler(note);
+    }
     handleClick(note) {
     	this.props.onClick(note);
     }
@@ -12,12 +15,13 @@ export default class Sidebar extends React.Component {
         this.props.handleSearch(searchText);
     }
     render() {
-        return <aside className="sidebar">
+        return (<aside className="sidebar">
                     <Search handleSearch={this.handleSearch.bind(this)} searchText={this.props.searchText} />
                     <NotesList className="notesList" 
                                searchText={this.props.searchText} 
                                notes={this.props.notes} 
-                               onClick={this.handleClick.bind(this)} />
-               </aside>;
+                               onClick={this.handleClick.bind(this)}
+                               deleteHandler={this.deleteHandler.bind(this)} />
+               </aside>);
     }
 }

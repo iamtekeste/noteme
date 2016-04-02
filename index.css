@@ -13,6 +13,24 @@ aside {
 	font-size: 18px;
     padding: 10px 10px;
     border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+.noteItem.selected {
+    background: #FFE65F;
+}
+.noteItem:first-child {
+    font-size: 18px;
+    padding: 10px 10px;
+    border-top: 1px solid #eee;
+}
+.noteTitle {
+    display: inline-block;
+    width: 90%;
+}
+span.deleteNote {
+    display: inline-block;
+    float: right;
+    cursor: pointer;
 }
 .editor {
     width: 68%;
