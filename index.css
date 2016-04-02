@@ -11,16 +11,15 @@ aside {
 }
 .noteItem {
 	font-size: 18px;
-    padding: 10px 10px;
+    padding: 15px 10px;
     border-bottom: 1px solid #eee;
     border-right: 1px solid #eee;
-}
-.noteItem.selected {
-    background: #FFE65F;
+    -webkit-user-select: none;
+    cursor: pointer;
+    transition: background .3s;
 }
 .noteItem:first-child {
     font-size: 18px;
-    padding: 10px 10px;
     border-top: 1px solid #eee;
 }
 .noteTitle {
@@ -32,6 +31,16 @@ span.deleteNote {
     float: right;
     cursor: pointer;
 }
+.noteItem:hover{
+   background: #fff9d6;
+}
+.noteItem.selected {
+    background: #FFE65F;
+}
+.noteItem:hover, .noteItem.selected{
+   border-color: transparent;
+}
+
 .editor {
     width: 68%;
     margin-left: 10px;

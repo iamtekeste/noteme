@@ -37,6 +37,7 @@ export default class App extends React.Component {
 
   //This sets the currently selected note
   handleClick(note) {
+    console.log(note);
     this.setState({selectedNote: note});
   }
 
@@ -108,7 +109,8 @@ export default class App extends React.Component {
                  handleSearch={this.handleSearch.bind(this)}
                  notes={this.state.notes} 
                  searchText={this.state.searchText}
-                 deleteHandler={this.deleteHandler.bind(this)} />
+                 deleteHandler={this.deleteHandler.bind(this)} 
+                 selectedNote={this.state.selectedNote}/>
         <Editor selectedNote={this.state.selectedNote} 
                 onChangeMe={this.handleChange.bind(this)}
                 addNewNote={this.addNewNote.bind(this)} />

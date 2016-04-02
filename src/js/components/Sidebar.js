@@ -21,7 +21,8 @@ export default class Sidebar extends React.Component {
                                searchText={this.props.searchText} 
                                notes={this.props.notes} 
                                onClick={this.handleClick.bind(this)}
-                               deleteHandler={this.deleteHandler.bind(this)} />
+                               deleteHandler={this.deleteHandler.bind(this)}
+                               selectedNote={this.props.selectedNote} />
                </aside>);
     }
 }
