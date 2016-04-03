@@ -1,4 +1,6 @@
 import React from "react";
+import Util from "./utils";
+import ReactDOM from 'react-dom';
 
 export default class NoteItem extends React.Component {
 	constructor(){
@@ -17,18 +19,21 @@ export default class NoteItem extends React.Component {
 			note: {_id:null, text:''}
 		}
 	}
-	// componentWillReceiveProps() {
-	// 	this.setState({note: this.props.selectedNote }, () => {
-	// 		console.log(this.state.note._id);
-	// 	});
-	// }
+	componentDidMount() {
+		ReactDOM.findDOMNode(this.refs.editor).focus(); 
+	}
+
 	addNewNote() {
 		this.props.addNewNote();
 	}
 	render() {
 		return (
 			<div className="editor"> 
-				<div><button onClick={this.addNewNote.bind(this)}> New Note </button></div>
+				<div className="toolBar">
+						<img src="src/images/pen.svg" onClick={this.addNewNote.bind(this)} />
+						{Util.getTime()}
+
+				</div>
 				<textarea ref="editor"onChange={this.handleChange.bind(this)} value={this.props.selectedNote.text}/>
 			</div>
 		);

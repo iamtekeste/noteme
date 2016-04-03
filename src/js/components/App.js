@@ -93,7 +93,7 @@ export default class App extends React.Component {
       if(note._id != noteToBeDeleted._id)
           return note;
     });
-    this.setState({notes: updatedNotes});
+    this.setState({notes: updatedNotes, selectedNote:{_id:null, text: ''}});
 
     noteToBeDeleted._deleted = true;
     //let's actually remove it from the database

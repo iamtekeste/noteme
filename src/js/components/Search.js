@@ -8,6 +8,10 @@ export default class Search extends React.Component {
 		this.props.handleSearch(e.target.value);
 	}
 	render() {
-		return <input className="searchBox" type="text" value={this.props.searchText} onChange={this.handleChange.bind(this)} />;
+		return ( <div className="searchBox"> 
+					<img src="src/images/search.svg" />
+					<input type="text" placeholder="Search" value={this.props.searchText} onChange={this.handleChange.bind(this)} />
+				 </div>
+		);
 	}
 }
