@@ -16,20 +16,7 @@ export default class App extends React.Component {
       searchText: ''
     };
   }
-  deleteNote(noteToBeDeleted) {
-    var existingNotes = this.state.notes;
-    var updatedNotes = existingNotes.filter(function(note) {
-      if(note._id != noteToBeDeleted._id)
-          return note;
-    });
-    this.setState({notes: updatedNotes});
 
-    //let's actually remove it from the database
-    put.remove(note)
-      .catch(function(err) {
-        console.log(err.message)
-      })
-  }
   loadNotesFromDB() {
     db.allDocs({include_docs: true, descending: true}, (err, doc) => {
        var notes = [];
@@ -51,6 +38,7 @@ export default class App extends React.Component {
 
   //This sets the currently selected note
   handleClick(note) {
+    console.log(note);
     this.setState({selectedNote: note});
   }
 
@@ -93,10 +81,26 @@ export default class App extends React.Component {
     var newNote = {_id:null, text: ''}
     this.setState({selectedNote: newNote});
   }
+
   handleSearch(searchText) {
       this.setState({searchText: searchText});
   }
 
+  deleteHandler(noteToBeDeleted) {
+    var existingNotes = this.state.notes;
+    var updatedNotes = existingNotes.filter(function(note) {
+      if(note._id != noteToBeDeleted._id)
+          return note;
+    });
+    this.setState({notes: updatedNotes, selectedNote:{_id:null, text: ''}});
+
+    noteToBeDeleted._deleted = true;
+    //let's actually remove it from the database
+    db.put(noteToBeDeleted)
+      .catch(function(err) {
+        console.log(err.message)
+    });
+  }
   render() {
     return (
       <div>
@@ -104,7 +108,8 @@ export default class App extends React.Component {
                  handleSearch={this.handleSearch.bind(this)}
                  notes={this.state.notes} 
                  searchText={this.state.searchText}
-                  />
+                 deleteHandler={this.deleteHandler.bind(this)} 
+                 selectedNote={this.state.selectedNote}/>
         <Editor selectedNote={this.state.selectedNote} 
                 onChangeMe={this.handleChange.bind(this)}
                 addNewNote={this.addNewNote.bind(this)} />

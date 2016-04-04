@@ -3,24 +3,20 @@ const remote = window.require('electron').remote;
 export default class NoteItem extends React.Component {
 	constructor(){
 		super();
+		this.state = {active: false};
 	}
-	handleContext() {
-		const Menu = remote.Menu;
-		const MenuItem = remote.MenuItem;
-
-		var menu = new Menu();
-		menu.append(new MenuItem({ label: 'Delete', click: function() { console.log('item 1 clicked'); } }));
-		menu.popup(remote.getCurrentWindow());
+	deleteNote() {
+		this.props.deleteHandler(this.props.note);
 	}
 	handleClick() {
 		this.props.onClick(this.props.note);
-		this.handleContext();
 	}
 	render() {
-			return (<div className="noteItem" 
-						onClick={this.handleClick.bind(this)}
-						onContextMenu={this.handleContext.bind(this)}> 
-						{this.props.note.text} 
+			let noteItemClass = 'noteItem';
+			if (this.props.isActive) {noteItemClass += ' selected'}
+			return (<div className={noteItemClass}> 
+						<div className="noteTitle" onClick={this.handleClick.bind(this)}>{this.props.note.text}</div>
+						<span className="deleteNote" onClick={this.deleteNote.bind(this)}> x </span>
 				    </div>
 		    )
 	}
