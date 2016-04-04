@@ -96,10 +96,11 @@ export default class App extends React.Component {
 
     noteToBeDeleted._deleted = true;
     //let's actually remove it from the database
-    db.put(noteToBeDeleted)
-      .catch(function(err) {
-        console.log(err.message)
-    });
+      db.upsert(noteToBeDeleted._id, function (doc) {
+        doc._deleted = true;
+        return doc;
+      }).then(function (res) {
+      }).catch(function(err) {console.log(err.message)});
   }
   render() {
     return (
