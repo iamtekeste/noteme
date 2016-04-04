@@ -8,7 +8,9 @@
     "index.html"
   ],
   "dependencies": {
+    "electron-contextmenu-middleware": "^1.0.1",
     "electron-debug": " ^0.5.0",
+    "electron-input-menu": "^1.0.2",
     "pouchdb": "^5.3.1",
     "pouchdb-upsert": "^2.0.0",
     "react": "^0.14.6",

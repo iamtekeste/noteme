@@ -2,6 +2,7 @@ import React from "react";
 import PouchDB from "pouchdb";
 import Sidebar from "./Sidebar";
 import Editor from "./Editor";
+const remote = window.require('electron').remote;
 PouchDB.plugin(require('pouchdb-upsert'));
 
 let db = new PouchDB("notes");
@@ -59,8 +60,6 @@ export default class App extends React.Component {
         doc.text = note.text;
         return doc;
       }).then(function (res) {
-        console.log(res.updated); 
-        // success, res is {rev: '1-xxx', updated: true}
       }).catch(function(err) {console.log(err.message)});
   }
 
