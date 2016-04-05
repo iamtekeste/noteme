@@ -72,8 +72,7 @@ export default class App extends React.Component {
     }
 
     //save to database
-    this.saveToDB(currentNote );
-
+    this.saveToDB(currentNote);
   }
 
   //this is called when the New Note button is clicked

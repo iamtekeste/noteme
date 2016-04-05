@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 export default class NoteItem extends React.Component {
 	constructor(){
 		super();
+		this.state = {currentTime: Util.getTime()}
 	}
 	handleChange(e) {
 			   let newNote = this.props.selectedNote;
@@ -16,11 +17,16 @@ export default class NoteItem extends React.Component {
 	}
 	componentWillMount() {
 		this.state = {
-			note: {_id:null, text:''}
+			currentTime: Util.getTime()
 		}
 	}
-	componentDidMount() {
+	componentWillUpdate() {
 		ReactDOM.findDOMNode(this.refs.editor).focus(); 
+	}
+	componentDidMount() {
+		window.setInterval(function () {
+		      this.setState({currentTime: Util.getTime()})
+	    }.bind(this), 1000);
 	}
 
 	addNewNote() {
@@ -31,8 +37,8 @@ export default class NoteItem extends React.Component {
 			<div className="editor"> 
 				<div className="toolBar">
 						<img src="src/images/pen.svg" onClick={this.addNewNote.bind(this)} />
-						{Util.getTime()}
-
+						{this.state.currentTime}
+						<span className="saved">Saved</span>
 				</div>
 				<textarea ref="editor"onChange={this.handleChange.bind(this)} value={this.props.selectedNote.text}/>
 			</div>

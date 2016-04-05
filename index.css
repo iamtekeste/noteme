@@ -1,19 +1,21 @@
 * {
     box-sizing: border-box;
-    font-family: "Roboto Slab";
+    font-family: "Consolas";
     font-weight: 400;
 }
 body {
     margin: 0;
     background: #fff;
 } 
+#app {
+    /*overflow-y: hidden; */
+}
 aside, .editor {display: inline-block; vertical-align: top;}
 aside {
     width: 32%;
     border-right: 1px solid #dbdbdb;
+    position: fixed;
     height: 100vh;
-    font-family: Fira;
-    /*padding: 0px 12px;*/
 }
 .searchBox {
     padding: 10px 12px;
@@ -27,11 +29,12 @@ aside {
     left: 16px;
 }
 .searchBox input {
-    height: 22.5px;
+    height: 24.5px;
     width: 100%;
     border-radius: 3px;
     border: 1px solid #dbdbdb;
     padding-left: 26px;
+    font-size: 16px;
 }
 input:focus, textarea:focus {
     outline: none;
@@ -50,6 +53,7 @@ input:focus, textarea:focus {
 }
 .noteItem:first-child * {
     border-top: none;
+    border-color:#FFE65F;
 }
 
 .noteItem:hover *, .noteItem:hover + .noteItem * ,
@@ -91,8 +95,10 @@ span.deleteNote:hover {
     width: 67.6712328767%;
     font-size: 16px;
     line-height: 34px;
-    height: 100vh;
     padding: 10px 20px;
+    position: fixed;
+    left: 32%;
+    height: 100vh;
 }
 .editor img {
     width: 26px;
@@ -101,11 +107,23 @@ span.deleteNote:hover {
 }
 .editor .toolBar {
     text-align: center;
+    position: fixed;
+    width: 67.6712328767%;
+    background: #fff;
+    padding: 0px 20px;
+    left: 32%;
 }
+.editor .toolBar span.saved {
+    float: right;
+}
+
 textarea {
     width: 100%;
     height: 100%;
     font-size: 16px;
     line-height: 25px;
     border: none;
+    display: block;
+    padding-top: 35px;
+    resize: none;
 }
