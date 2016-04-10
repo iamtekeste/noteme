@@ -1,6 +1,8 @@
 import React from "react";
 import NotesList from "./NotesList";
 import Search from "./Search";
+import {Motion, spring} from 'react-motion';
+
 export default class Sidebar extends React.Component {
     constructor() {
         super();

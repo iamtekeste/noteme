@@ -14,7 +14,8 @@
     "pouchdb": "^5.3.1",
     "pouchdb-upsert": "^2.0.0",
     "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "react-dom": "^0.14.6",
+    "react-motion": "^0.4.2"
   },
   "devDependencies": {
     "babel-loader": "^6.2.0",
