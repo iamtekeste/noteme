@@ -44,5 +44,7 @@ app.on('activate', () => {
 
 app.on('ready', () => {
 	mainWindow = createMainWindow();
+	mainWindow.setMenu(null);
 	mainWindow.maximize();
+
 });
