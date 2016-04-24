@@ -5,7 +5,7 @@ import Editor from "./Editor";
 const remote = window.require('electron').remote;
 PouchDB.plugin(require('pouchdb-upsert'));
 
-let db = new PouchDB("notes");
+let db = new PouchDB("notes", {auto_compaction: true});
 window.PouchDB = db;
 export default class App extends React.Component {
   constructor() {
