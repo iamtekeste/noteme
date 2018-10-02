@@ -11,7 +11,7 @@
     "electron-contextmenu-middleware": "^1.0.1",
     "electron-debug": " ^0.5.0",
     "electron-input-menu": "^1.0.2",
-    "pouchdb": "^5.3.1",
+    "pouchdb": "^7.0.0",
     "pouchdb-upsert": "^2.0.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
@@ -26,10 +26,10 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
-    "electron-packager": "^5.0.0",
+    "electron-packager": "^12.1.2",
     "electron-prebuilt": "^0.37.3",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^3.1.9"
   },
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server --content-base src --inline --hot",
